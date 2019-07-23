@@ -36,20 +36,47 @@ void EuclideanSegmenter::segment(const PointICloud &cloud_in,
     common::Clock clock;
     ROS_INFO("Starting Euclidean segmentation.");
 
+    //--------------------------------
+    //Here I start my magic
+    PointICloudPtr cloud_filtered(new PointICloud);
+    cloud_filtered->clear();
+    
+    PointICloudPtr change(new PointICloud);
+    change->clear();
+
+    pcl::copyPointCloud(cloud_in, *change);
+    
+    PointICloud& project_cloud = *change;
+    //const PointICloud& project_cloud = cloud_in;
+
+    pcl::PointIndices::Ptr filtered_indices(new pcl::PointIndices);
+    filtered_indices->indices.clear();
+
+    for (size_t pt = 0u; pt < project_cloud.points.size()-2; ++pt){
+        project_cloud.points[pt].z = 0.0;
+        filtered_indices->indices.push_back(pt);
+    }
+    pcl::copyPointCloud(project_cloud, *filtered_indices, *cloud_filtered);
+
+    PointICloudPtr input_cloud(new PointICloud);
+    *input_cloud = *cloud_filtered;
+    //Here my magic end
+    //--------------------------------
+
     PointICloudPtr cloud(new PointICloud);
     *cloud = cloud_in;
 
     std::vector<pcl::PointIndices> cluster_indices;
 
     // extract clusters
-    euclidean_cluster_extractor_.setInputCloud(cloud);
+    euclidean_cluster_extractor_.setInputCloud(input_cloud);
     euclidean_cluster_extractor_.extract(cluster_indices);
 
     if (cluster_indices.size() > 0) {
         for (size_t cluster_idx = 0u; cluster_idx < cluster_indices.size();
              ++cluster_idx) {
             PointICloudPtr cluster_cloud(new PointICloud);
-            pcl::copyPointCloud(*cloud, cluster_indices[cluster_idx],
+            pcl::copyPointCloud(cloud_in, cluster_indices[cluster_idx],
                                 *cluster_cloud);
             cloud_clusters.push_back(cluster_cloud);
         }
