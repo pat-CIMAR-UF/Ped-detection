@@ -23,10 +23,10 @@
     $ git clone https://github.com/pat-CIMAR-UF/segmenters_lib.git segmenters
     
     # build your ros workspace for our segmentation-based detection demo
-    # uncomment add_subdirectory() in src/perception/libs/segmenters/CMakeLists.txt, git diff as following:
-    -#add_subdirectory(example)
+    # uncomment add_subdirectory() in src/perception/libs/segmenters/CMakeLists.txt, git diff as following
     +add_subdirectory(example)
     $ cd $(CATKIN_WS)
+    $ pip install catkin-tools
     $ catkin build -DCMAKE_BUILD_TYPE=Release
     ```
 2. Run demo under [KiTTI raw dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php) using [kitti_ros](https://github.com/LidarPerception/kitti_ros.git)'s replayer.
