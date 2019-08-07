@@ -7,6 +7,7 @@
 ## How to use
 1. We name your ros workspace as `CATKIN_WS` and `git clone` as a ROS package, with [common_lib](https://github.com/LidarPerception/common_lib) and [object_builders_lib](https://github.com/LidarPerception/object_builders_lib) as dependencies.
     ```bash
+    $ pip install catkin-tools
     $ cd $(CATKIN_WS)
     # we recommand you to organize your workspace as following
     $ mkdir -p src/common
