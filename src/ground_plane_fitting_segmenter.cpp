@@ -1,7 +1,3 @@
-/*
- * Copyright (C) 2019 by AutoSense Organization. All rights reserved.
- * Gary Chan <chenshj35@mail2.sysu.edu.cn>
- */
 #include "segmenters/ground_plane_fitting_segmenter.hpp"
 
 #include <ros/ros.h>

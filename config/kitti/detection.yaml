@@ -24,12 +24,12 @@ detect: {
     ## Horizontal range
     #--- for "Cylinder"
     roi_radius_min_m: 2.,
-    roi_radius_max_m: 120.,
+    roi_radius_max_m: 35.,
     #--- for "Square"
     #roi_radius_min_m: 15.,
     #roi_radius_max_m: 120.,
     # Vertical range
-    roi_height_below_m: 1.,
+    roi_height_below_m: 1.2.,
     roi_height_above_m: 20.,
   },
 

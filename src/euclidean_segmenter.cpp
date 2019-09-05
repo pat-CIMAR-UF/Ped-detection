@@ -1,7 +1,3 @@
-/*
- * Copyright (C) 2019 by AutoSense Organization. All rights reserved.
- * Gary Chan <chenshj35@mail2.sysu.edu.cn>
- */
 #include "segmenters/euclidean_segmenter.hpp"
 
 #include <pcl/filters/extract_indices.h>  // pcl::ExtractIndices
