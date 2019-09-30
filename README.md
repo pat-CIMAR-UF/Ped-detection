@@ -61,6 +61,7 @@
     </p>
 
 ## [Parameters](./launch/demo.launch)
+**Modify parameters in Ped-detection/config/kitti/ to make it run**
 + Demo parameters, defined in [detection.yaml](./config/kitti/detection.yaml)
     + Subscribe Point Cloud in topic `sub_pc_topic`, default is **/kitti/points_raw** _(sensor_msgs/PointCloud2)_.
     + Publish **Ground Point Cloud** in topic `pub_pc_ground_topic`, default is **/segmenter/points_ground** _(sensor_msgs/PointCloud2)_.
